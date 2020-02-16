@@ -13,8 +13,6 @@ git:
   depth: 1
 
 before_install:
-  # Registering file format recognizers since RUN command is used
-  - sudo docker run --privileged linuxkit/binfmt:v0.7
   # Get scripts for building Docker images
   - id=$(docker create moikot/docker-tools)
   - docker cp $id:/scripts.sh /tmp/scripts.sh && docker rm -v $id
