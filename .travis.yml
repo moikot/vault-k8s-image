@@ -7,7 +7,7 @@ services:
 
 env:
   global:
-    - DOCKER_PLATFORMS="linux/amd64"
+    - DOCKER_PLATFORMS="linux/amd64,linux/arm64"
 
 git:
   depth: 1
@@ -35,7 +35,7 @@ matrix:
       script:
         - >-
           /tmp/scripts.sh build_images
-          ${TRAVIS_REPO_SLUG} ${TRAVIS_COMMIT::6} linux/amd64
+          ${DOCKER_IMAGE} ${TRAVIS_COMMIT::6} linux/amd64
     - stage: build and deploy master
       script:
         - >-
@@ -43,7 +43,7 @@ matrix:
           docker login -u "${DOCKER_USERNAME}" --password-stdin
         - >-
           /tmp/scripts.sh build_images
-          ${TRAVIS_REPO_SLUG} master ${DOCKER_PLATFORMS} --push
+          ${DOCKER_IMAGE} master ${DOCKER_PLATFORMS} --push
     - stage: build and deploy a version
       script:
         - >-
@@ -51,10 +51,10 @@ matrix:
           docker login -u "${DOCKER_USERNAME}" --password-stdin
         - >-
           /tmp/scripts.sh build_images
-          ${TRAVIS_REPO_SLUG} ${TRAVIS_TAG} ${DOCKER_PLATFORMS} --push
+          ${DOCKER_IMAGE} ${TRAVIS_TAG} ${DOCKER_PLATFORMS} --push
         - >-
           /tmp/scripts.sh push_readme
-          ${TRAVIS_REPO_SLUG} README.md
+          ${DOCKER_IMAGE} README.md
           ${DOCKER_USERNAME} ${DOCKER_PASSWORD}
 
 notifications:
