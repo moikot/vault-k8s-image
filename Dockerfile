@@ -13,8 +13,6 @@ COPY --from=tonistiigi/xx:golang / /
 ARG TARGETPLATFORM
 ARG GO_APP
 
-RUN echo ${GO_APP}
-
 RUN apk add --no-cache git \
     \
     # Download as a package
