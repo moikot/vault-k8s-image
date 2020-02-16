@@ -27,4 +27,4 @@ FROM scratch
 COPY --from=build-env /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 COPY --from=build-env /go/bin/vault-k8s /
 
-ENTRYPOINT ["/main"]
+ENTRYPOINT ["/vault-k8s"]
