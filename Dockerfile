@@ -1,12 +1,11 @@
 ARG GO_VERSION=1.12.0
-ARG GO_APP=github.com/hashicorp/vault-k8s@v0.2.0
+ARG GO_APP=github.com/hashicorp/vault-k8s@v0.5.0
 
 FROM --platform=$BUILDPLATFORM golang:${GO_VERSION}-alpine as build-env
 
 LABEL maintainer="sanisimov@moikot.com"
 
 # xx wraps go to automatically configure $GOOS, $GOARCH, and $GOARM
-# based on TARGETPLATFORM provided by Docker.
 COPY --from=tonistiigi/xx:golang / /
 
 # Compile independent executable using go wrapper from xx:golang
