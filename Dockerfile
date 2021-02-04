@@ -1,5 +1,5 @@
 ARG GO_VERSION=1.12.0
-ARG GO_APP=github.com/hashicorp/vault-k8s@v0.5.0
+ARG GO_APP=github.com/hashicorp/vault-k8s@v0.8.0
 
 FROM --platform=$BUILDPLATFORM golang:${GO_VERSION}-alpine as build-env
 
