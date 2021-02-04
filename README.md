@@ -8,8 +8,6 @@ A multi-platform Docker image of [hashicorp/vault-k8s](https://github.com/hashic
 ## Supported platforms
 * linux/amd64
 * linux/arm64
-* linux/386
-* linux/arm/v6
 
 ## Run
 
